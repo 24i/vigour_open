@@ -6,15 +6,15 @@
   "scripts": {
     "test": "gaston test -t -r browser -s test/browser/index.js",
     "build": "cd example && gaston build -s index.js -o ./ -i && pwd",
-    "ios-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper/bin/build.js build --native.selectedPlatforms ios",
-    "ios": "npm run build && wrapper/bin/build.js build --native.selectedPlatforms ios",
-    "android-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper/bin/build.js build --native.selectedPlatforms android",
+    "ios-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms ios",
+    "ios": "npm run build && wrapper build --native.selectedPlatforms ios",
+    "android-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms android",
     "durp": "cd example ; pwd",
-    "wex": "npm run durp ; pwd ; wrapper/bin/build.js build --native.selectedPlatforms android",
+    "wex": "npm run durp ; pwd ; wrapper build --native.selectedPlatforms android",
     "android": "npm run build && pwd && npm run wrap-android",
-    "wrap-android": "wrapper/bin/build.js build --native.selectedPlatforms android",
-    "all": "npm run build && wrapper/bin/build.js build",
-    "tizentv": "npm run build && wrapper/bin/build.js build --native.selectedPlatforms tizentv",
+    "wrap-android": "wrapper build --native.selectedPlatforms android",
+    "all": "npm run build && wrapper build",
+    "tizentv": "npm run build && wrapper build --native.selectedPlatforms tizentv",
     "postinstall": "./makelinks.sh vigour-open"
   },
   "repository": {
