@@ -1,0 +1,76 @@
+{
+  "name": "vigour-open-tests",
+  "dependencies": {
+    "vigour-open": "../"
+  },
+  "gaston": {
+    "package": true
+  },
+  "vigour": {
+    "open": {
+
+    },
+    "native": {
+      "debug": true,
+      "platforms": {
+        "ios": {
+          "productName": "Open Tests",
+          "organizationName": "Vigour",
+          "organizationIdentifier": "io.vigour.open",
+          "buildNumber": "1",
+          "appIndexPath": "build.html",
+          "NSAllowsArbitraryLoads": true,
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
+          }
+        },
+        "android": {
+          "debug": true,
+          "run": true,
+          "productName": "Open Tests",
+          "applicationId": "io.vigour.open",
+          "appIndexPath": "build.html",
+          "splashDuration": "0",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
+          }
+        }
+      }
+    }
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "sinon"
+    ]
+  },
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/vigour-io/open/issues"
+  },
+  "author": "Vigour <dev@vigour.io>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/open"
+  },
+  "homepage": "https://github.com/vigour-io/open",
+  "engines": {},
+  "license": "MIT"
+}

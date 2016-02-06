@@ -1,0 +1,65 @@
+{
+  "name": "vigour-open-example",
+  "scripts": {
+    "build": "gaston build -s index.js -o ./ -i",
+    "wrap-android": "../../tmp/wrapper/bin/build.js build --native.selectedPlatforms android",
+    "android": "npm run build && npm run wrap-android",
+    "wrap-ios": "../../tmp/wrapper/bin/build.js build --native.selectedPlatforms ios",
+    "ios": "npm run build && npm run wrap-ios"
+  },
+  "dependencies": {
+    "vigour-open": "../"
+  },
+  "gaston": {
+    "package": true
+  },
+  "vigour": {
+    "open": {},
+    "native": {
+      "debug": true,
+      "platforms": {
+        "ios": {
+          "productName": "Open Example",
+          "organizationName": "Vigour",
+          "organizationIdentifier": "io.vigour.open",
+          "buildNumber": "1",
+          "appIndexPath": "build.html",
+          "NSAllowsArbitraryLoads": true,
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "android": {
+          "debug": true,
+          "run": true,
+          "productName": "Open Example",
+          "applicationId": "io.vigour.open",
+          "appIndexPath": "build.html",
+          "splashDuration": "0",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        }
+      }
+    }
+  },
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/vigour-io/open/issues"
+  },
+  "author": "Vigour <dev@vigour.io>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/open"
+  },
+  "homepage": "https://github.com/vigour-io/open",
+  "engines": {},
+  "license": "MIT"
+}

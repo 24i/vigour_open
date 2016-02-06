@@ -1,0 +1,112 @@
+{
+  "name": "vigour-open",
+  "version": "0.0.1",
+  "description": "open links in default browser",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "gaston test -t -r browser -s test/browser/index.js",
+    "build": "cd example && gaston build -s index.js -o ./ -i && pwd",
+    "ios-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && ../../tmp/wrapper/bin/build.js build --native.selectedPlatforms ios",
+    "ios": "npm run build && ../tmp/wrapper/bin/build.js build --native.selectedPlatforms ios",
+    "android-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && ../tmp/wrapper/bin/build.js build --native.selectedPlatforms android",
+    "durp": "cd example ; pwd",
+    "wex": "npm run durp ; pwd ; ../tmp/wrapper/bin/build.js build --native.selectedPlatforms android",
+    "android": "npm run build && pwd && npm run wrap-android",
+    "wrap-android": "../tmp/wrapper/bin/build.js build --native.selectedPlatforms android",
+    "all": "npm run build && ../tmp/wrapper/bin/build.js build",
+    "tizentv": "npm run build && ../tmp/wrapper/bin/build.js build --native.selectedPlatforms tizentv",
+    "postinstall": "./makelinks.sh vigour-open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vigour-io/open.git"
+  },
+  "keywords": [
+    "vigour",
+    "wrapper",
+    "native",
+    "plugin",
+    "open"
+  ],
+  "author": "Vigour",
+  "contributors": [
+    "Shawn Inder <shawn@vigour.io>"
+  ],
+  "bugs": {
+    "url": "https://github.com/vigour-io/open/issues"
+  },
+  "homepage": "https://github.com/vigour-io/open",
+  "engines": {
+    "node": ">=4.1.2"
+  },
+  "dependencies": {
+    "vigour-config": "~0.0.8",
+    "vigour-env": "~1.0.19",
+    "vigour-js": "~0.4.4",
+    "vigour-ua": "~0.0.5",
+    "vigour-wrapper": "~2.2.13"
+  },
+  "devDependencies": {
+    "gaston": "^0.28.2",
+    "npmlog": "^2.0.0",
+    "vigour-element": "~0.2.4"
+  },
+  "license": "MIT",
+  "vigour": {
+    "native": {
+      "debug": true,
+      "platforms": {
+        "ios": {
+          "productName": "Open Example",
+          "organizationName": "Vigour",
+          "organizationIdentifier": "io.vigour.open",
+          "buildNumber": "1",
+          "appIndexPath": "build.html",
+          "NSAllowsArbitraryLoads": true,
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "android": {
+          "productName": "Open Example",
+          "applicationId": "io.vigour.open",
+          "appIndexPath": "build.html",
+          "keystoreFile": "example.keystore",
+          "keystorePassword": "shmexample",
+          "keystoreAlias": "blabla",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        }
+      }
+    },
+    "plugin": {
+      "android": {
+        "className": "io.vigour.plugin.open.OpenPlugin",
+        "instantiation": "new OpenPlugin(this)",
+        "activity": {
+          "android:name": "com.open.OpenActivity",
+          "android:configChanges": "screenLayout|screenSize|orientation",
+          "android:theme": "@android:style/Theme.Translucent.NoTitleBar",
+          "android:label": "@string/app_name"
+        }
+      }
+    }
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "sinon"
+    ]
+  }
+}
