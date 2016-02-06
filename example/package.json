@@ -2,9 +2,9 @@
   "name": "vigour-open-example",
   "scripts": {
     "build": "gaston build -s index.js -o ./ -i",
-    "wrap-android": "../../tmp/wrapper/bin/build.js build --native.selectedPlatforms android",
+    "wrap-android": "wrapper/bin/build.js build --native.selectedPlatforms android",
     "android": "npm run build && npm run wrap-android",
-    "wrap-ios": "../../tmp/wrapper/bin/build.js build --native.selectedPlatforms ios",
+    "wrap-ios": "wrapper/bin/build.js build --native.selectedPlatforms ios",
     "ios": "npm run build && npm run wrap-ios"
   },
   "dependencies": {
