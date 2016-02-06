@@ -4,25 +4,7 @@ var app = window.app = require('vigour-element/lib/app')
 var open = require('../lib/')
 // open.init()
 open.set({
-  val: true, // activate open
-  name: {
-    on: {
-      data: {
-        example () {
-          console.log('######## NAME HAS CHANGED=====> ', this.val)
-        }
-      }
-    }
-  },
-  url: {
-    on: {
-      data: {
-        example () {
-          console.log('######## URL HAS CHANGED=====> ', this.val)
-        }
-      }
-    }
-  }
+  val: true // activate open
 })
 
 app.set({
@@ -30,13 +12,30 @@ app.set({
     node: 'h1',
     text: 'Open Test!'
   },
-  button: {
+  inside: {
     node: 'button',
     text: 'vigour.io',
     on: {
       click () {
-        console.log('hey!')
-        open.url.val = 'http://vigour.io'
+        open.open('http://vigour.io', '_self')
+      }
+    }
+  },
+  outside: {
+    node: 'button',
+    text: 'vigour.io (new tab)',
+    on: {
+      click () {
+        open.open('http://vigour.io', '_blank')
+      }
+    }
+  },
+  remote: {
+    node: 'button',
+    text: 'vigour.io (named tab)',
+    on: {
+      click () {
+        open.open('http://vigour.io', 'shawn')
       }
     }
   }
@@ -49,8 +48,3 @@ open.on('error', function (err) {
 open.ready.on(() => {
   console.log('---- open.ready!')
 })
-console.log('open', open)
-console.log('open.name', open.name)
-console.log('open.url', open.url)
-console.log('open.name.val', open.name.val)
-console.log('open.url.val', open.url.val)

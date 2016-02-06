@@ -14,14 +14,14 @@ module.exports = function (inject, type) {
   }
 
   it('open a page', function (done) {
-    console.log('a')
-    try {
-      open.url.on('data', (data) => {
-        done()
-      })
-      open.url.val = URL
-    } catch (e) {
-      throw new Error('FUCKSAKE')
-    }
+    open.open(URL, '_self', done)
+  })
+
+  it('open a page in a new tab', function (done) {
+    open.open(URL, '_blank', done)
+  })
+
+  it('open a page in a named tab', function (done) {
+    open.open(URL, 'shawn', done)
   })
 }

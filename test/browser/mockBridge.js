@@ -9,7 +9,7 @@ bridge.mock = {
       // in case of error > cb(err)
       // in case of not
       // 50/50 initial state logged out / in
-      var response = { name: 'outside' }
+      var response = { name: '_self' }
       // async callback
       setTimeout(() => {
         cb && cb(null, response)
