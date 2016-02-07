@@ -7,7 +7,7 @@
     "test": "gaston test -t -r browser -s test/browser/index.js",
     "build": "cd example && gaston build -s index.js -o ./ -i && pwd",
     "ios-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms ios",
-    "ios": "npm run build && wrapper build --native.selectedPlatforms ios",
+    "ios": "npm run build && cd example && wrapper build --native.selectedPlatforms ios",
     "android-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms android",
     "durp": "cd example ; pwd",
     "wex": "npm run durp ; pwd ; wrapper build --native.selectedPlatforms android",
