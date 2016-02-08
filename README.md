@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/vigour-open.svg)](https://badge.fury.io/js/vigour-open)
 [![Build Status](https://travis-ci.org/vigour-io/open.svg?branch=develop)](https://travis-ci.org/vigour-io/open)
 
-# Facebook
+# Open
 
 ## Install
 - `npm i vigour-open`

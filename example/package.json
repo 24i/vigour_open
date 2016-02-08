@@ -19,6 +19,7 @@
       "debug": true,
       "platforms": {
         "ios": {
+          "debug": true,
           "productName": "Open Example",
           "organizationName": "Vigour",
           "organizationIdentifier": "io.vigour.open",
