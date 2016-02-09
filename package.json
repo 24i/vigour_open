@@ -1,6 +1,6 @@
 {
   "name": "vigour-open",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "open links in default browser",
   "main": "lib/index.js",
   "scripts": {
