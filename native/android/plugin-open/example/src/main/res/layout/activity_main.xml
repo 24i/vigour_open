@@ -29,31 +29,24 @@
             />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="login"
+            android:text="open vigour link"
             />
 
         <Button
-            android:id="@+id/logout"
+            android:id="@+id/noscheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="logout"
+            android:text="missing scheme"
             />
 
         <Button
-            android:id="@+id/share"
+            android:id="@+id/tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="share vigour.io"
-            />
-
-        <Button
-            android:id="@+id/token"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="get token"
+            android:text="open telephone number"
             />
 
         <TextView

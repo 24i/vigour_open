@@ -1,16 +1,17 @@
 package io.vigour.plugin.example;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.vigour.nativewrapper.plugin.core.BridgeEvents;
 import io.vigour.plugin.open.OpenPlugin;
-import rx.Observer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,32 +28,46 @@ public class MainActivity extends AppCompatActivity {
         plugin = new OpenPlugin(this);
         plugin.setEventInterface(new BridgeEvents() {
 
-            @Override public void receive(String event, String data, String pluginId) {
-                eventView.setText(event + ": " + data);
+            @Override public void receive(String event, Object data, String pluginId) {
+                eventView.setText(event + ": " + data.toString());
                 eventView.setTextColor(0x99000000);
             }
         });
 
-        feedback(plugin.init("whatever1234"));
-
+        outputView.setText(plugin.init("whatever1234"));
     }
 
-    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        plugin.onActivityResult(requestCode, resultCode, data);
+    @OnClick(R.id.link)
+    public void vigour() {
+        open("https://vigour.io");
     }
 
-    @OnClick(R.id.logout)
-    public void logout() {
-        feedback(plugin.logout());
+    @OnClick(R.id.noscheme)
+    public void noscheme() {
+        open("vigour.io");
     }
 
-    @OnClick(R.id.open)
-    public void open() {
-        feedback(plugin.open("vigour.io"));
+    @OnClick(R.id.tel)
+    public void tel() {
+        open("tel:08001234");
     }
 
-    private void feedback(String message) {
-        outputView.setText(message);
+    private void open(String url) {
+        String response;
+        try {
+            response = plugin.open(map("url", url));
+        } catch(Exception e) {
+            e.printStackTrace();
+            response = e.getLocalizedMessage();
+        }
+        outputView.setText(response);
     }
+
+    private Map<String, Object> map(String key, String value) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(key, value);
+        return map;
+    }
+
+
 }

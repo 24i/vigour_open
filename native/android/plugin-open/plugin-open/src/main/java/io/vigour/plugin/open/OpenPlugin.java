@@ -5,27 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.open.CallbackManager;
-import com.open.OpenCallback;
-import com.open.OpenException;
-import com.fasterxml.jackson.jr.ob.JSON;
-
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Map;
 
-import io.vigour.nativewrapper.plugin.core.ActivityResultListener;
 import io.vigour.nativewrapper.plugin.core.Plugin;
-import rx.Observable;
-import rx.Subscriber;
 
-public class OpenPlugin extends Plugin implements ActivityResultListener {
+public class OpenPlugin extends Plugin {
     private static final String NAME = "open";
     private static final String TAG = NAME;
+
     Activity activity;
-    private LoginManager loginManager;
-    public CallbackManager callbackManager;
-    OpenStatus status = new OpenStatus(); // wtf
 
     public OpenPlugin(Activity context) {
         super(NAME);
@@ -34,16 +22,14 @@ public class OpenPlugin extends Plugin implements ActivityResultListener {
 
     public String init(Object key) {
         Log.d(TAG, "init called, args: " + key);
+        return "";
+    }
 
     public String open(Map<String, Object> args) {
         Log.d(TAG, "url called, args: " + args);
         String url = args.get("url").toString();
-
-        return getString('wtf', url);
+        activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        return "";
     }
 
-    @Override public void onActivityResult(int requestCode, int resultCode, Object data) {
-        Log.i(TAG, "onactivityresult");
-        callbackManager.onActivityResult(requestCode, resultCode, (Intent) data);
-    }
 }
