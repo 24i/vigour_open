@@ -10,3 +10,6 @@ build
 test/build.*
 bundle
 bundle.*
+build.js
+build.css
+build.html
