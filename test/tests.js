@@ -13,6 +13,15 @@ module.exports = function (inject, type) {
     })
   }
 
+  it('can be activated', function (done) {
+    open.once(function () {
+      done()
+    })
+    open.set({
+      val: true
+    })
+  })
+
   it('open a page', function (done) {
     open.open(URL, '_self', done)
   })
