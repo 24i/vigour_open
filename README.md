@@ -18,7 +18,10 @@
 
 ## Usage
 
-See [tests](test)
+    var open = require('vigour-open')
+    open.open(url, target)
+
+*see [tests](test) for usage examples*
 
 ## Building native apps
 See [wrapper](http://github.com/vigour-io/vigour-native)
