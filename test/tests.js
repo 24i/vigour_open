@@ -1,17 +1,23 @@
 'use strict'
+
+var Plugin = require('vigour-wrapper-bridge/lib/plugin')
+var shared = require('../lib/shared')
+
 const URL = 'http://vigour.io'
+
 module.exports = function (inject, type) {
+
   var open
 
   it('require open', function () {
-    open = require('../lib')
+    if (inject) {
+      open = new Plugin({
+        inject: [shared, inject]
+      })
+    } else {
+      open = require('../lib')
+    }
   })
-
-  if (inject) {
-    it('create instance with mock properties', function () {
-      open = new open.Constructor(inject)
-    })
-  }
 
   it('can be activated', function (done) {
     open.once(function () {
